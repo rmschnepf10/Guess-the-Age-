@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <meta>
+    <title>Guess the Age</title>
+    <script>
+      var count = 1;
+      var count2 = 0;
+      var pics = ["<img class = 'pic' src = 'puupy age 4.jpg'>" , "<img class = 'pic' src = 'puppy age 12.jpg'>", "<img class = 'pic' src = 'puppy age 1.jpg'>"];
+      var answer = [ ];
+      var correct = [4, 12, 1]
+      var score = 0;
+      function displ()
+      {
+        document.getElementById('out').innerHTML = pics[0];
+      }
+
+      function image()
+      {
+        document.getElementById('out').innerHTML = pics[count];
+        count++;
+        guessNum();
+      }
+      function guessNum()
+      {
+        answer[count2] = document.getElementById("textbox").value;
+        count2++;
+        if(count > 3)
+          {
+          count = 2;
+          compareArrays(correct, answer);
+        }
+      }
+      function compareArrays(x, y)
+              {
+                  for(var i = 0 ; i < x.length; i++)
+                  {
+                    if(x[i] == y[i])
+                      {
+                        score++;
+                      }
+                  }
+                  document.getElementById('out').innerHTML = score;
+              }
+    </script>
+
+    <style>
+div{
+  display: inline-block;
+}
+.pic{
+  width: 400px;
+  height: 300px;
+}
+#title{
+  font-size: 50px;
+  color: rgb(0, 51, 153);
+  font-style: georgia;
+
+}
+#background{
+  background-color: rgb(250, 200, 250)
+}
+    </style>
+
+  </head>
+  <body onload = "displ()" id = "background">
+    <div>
+    <p id = "title">Guess the Age</p>
+    <span id = "out"></span>
+    <br>
+    <input type="button" onclick="image()" value="click1">
+    <input id="textbox" type="text" value="type in your guess">
+  </body>
+</html>
